@@ -1,0 +1,13 @@
+﻿build/
+build-tsan/
+cmake-build-*/
+.vscode/
+*.o
+*.a
+*.so
+*.exe
+*.out
+compile_commands.json
+.cache/
+*.log
+stress_results/
