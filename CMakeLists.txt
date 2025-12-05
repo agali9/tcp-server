@@ -8,6 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(TDS_ENABLE_ASAN "Enable AddressSanitizer" OFF)
 option(TDS_ENABLE_TSAN "Enable ThreadSanitizer" OFF)
+option(TDS_BUILD_TOOLS "Build benchmark and client tools" ON)
 
 if(TDS_ENABLE_ASAN AND TDS_ENABLE_TSAN)
     message(FATAL_ERROR "Cannot enable ASan and TSan simultaneously")
@@ -38,5 +39,9 @@ endif()
 add_executable(tds_server src/main.cpp)
 target_link_libraries(tds_server PRIVATE tds_core)
 
+if(TDS_BUILD_TOOLS)
+        add_executable(tds_client tools/simple_client.cpp)
+    target_link_libraries(tds_client PRIVATE tds_core)
+endif()
 
 
