@@ -40,7 +40,10 @@ add_executable(tds_server src/main.cpp)
 target_link_libraries(tds_server PRIVATE tds_core)
 
 if(TDS_BUILD_TOOLS)
-        add_executable(tds_client tools/simple_client.cpp)
+    add_executable(tds_bench tools/benchmark_client.cpp)
+    target_link_libraries(tds_bench PRIVATE tds_core)
+
+    add_executable(tds_client tools/simple_client.cpp)
     target_link_libraries(tds_client PRIVATE tds_core)
 endif()
 
